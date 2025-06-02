@@ -6,17 +6,20 @@ body{
     width: 100vw;
     height: 100vh;
     justify-content: center;
-    align-items: start;
+    align-items: center;
+    
 }
-
-
 form{
     width: 400px;
     height:700px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+
+
     
 }
 h1{
@@ -34,8 +37,15 @@ button{
     color: white;
     border-radius: 6px;
     border: none;
-    
+    cursor: pointer;
+    transition: all 0.3s ease;     
 }
+button:hover {
+    background-color: #4500d6;
+    transform: translateY(-1px);
+}
+
+
 div{
     display: flex;
     gap: 200px;
@@ -53,6 +63,16 @@ input{
   border: 2px solid #c3c3c3;
   padding:10px;
   background-color: white;
+  transition: all 0.3s ease;
+}
+input:focus{
+    outline: none;
+    border-color: #570ffe;
+    box-shadow: 0 0 0 3px rgba(87, 15, 254, 0.1);
+    background-color: white;
+}
+input::placeholder{
+    color: #a0aec0;
 }
 p{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -65,4 +85,3 @@ p{
     align-self: center;
 
 }
-
