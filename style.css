@@ -16,8 +16,10 @@ form{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
-    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 50px;
+    border-radius: 15px;
+
 }
 h1{
     text-align: center;
@@ -34,7 +36,14 @@ button{
     color: white;
     border-radius: 6px;
     border: none;
+    cursor: pointer; 
+    transition: all 0.3s ease;
     
+    
+}
+button:hover{
+   background-color: #4500d6;
+    transform: translateY(-1px);
 }
 div{
     display: flex;
@@ -54,6 +63,12 @@ input{
   border: 2px solid #c3c3c3;
   padding:10px;
   background-color: white;
+  transition: all 0.3s ease;
+}
+input:focus{
+    outline: none;
+    border: 2px solid  #570ffe;
+    box-shadow: 0 0 0 3px rgba(87, 15, 254, 0.1);
 }
 p{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
