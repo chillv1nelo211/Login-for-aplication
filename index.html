@@ -1,31 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
-    
-    <div class="formulario-login">
-    <form action="#" method="get">
-        <div class="logo">
-            <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="logo de el login">
-        </div>
-        <h1>Sign in to your account</h1>
-        <label for="correo">Email Adrees</label>
-        <input id="correo"type="Email" placeholder="Ingrese su email">
-        <div class="contraseña"><label class="password" for="contraseña">Password</label>
-        <a href="index3.html">Forgort password?</a></div>
-        <input id="contraseña" type="password" placeholder="Ingrese su contraseña">
-        <button type="submit" title="login" ><p class="sign-in">Sign in</p></button>
-        <p class="register">
-            Your not have acoount? <a  href="index2.html" >Register now</a>
-        </p>
-    </form>
-   </div>
 
+<body>
+
+
+    <div class="formulario-login">
+        <form action="#" method="get">
+            <div class="logo">
+                <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                    alt="logo de el login">
+            </div>
+            <h1>Sign in to your account</h1>
+            <label for="correo">Email Adrees</label>
+            <input id="correo" type="Email" placeholder="Ingrese su email">
+            <div class="contraseña"><label class="password" for="contraseña">Password</label>
+                <a href="index3.html">Forgort password?</a>
+            </div>
+            <input id="contraseña" type="password" placeholder="Ingrese su contraseña">
+            <button type="submit" title="login" id="login">
+                <p class="sign-in">Sign in</p>
+            </button>
+            <p class="register">
+                Your not have acoount? <a href="index2.html">Register now</a>
+            </p>
+        </form>
+    </div>
 </body>
+<script>
+    const email = document.getElementById('correo');
+    const contraseña = document.getElementById('contraseña');
+    const boton = document.getElementById('login');
+
+
+    async function validarLogin() {
+        try {
+            const response = await fetch(`http://localhost:8080/api/v1/usuarios/login/${email.value}/${contraseña.value}`);
+            const data = await response.json();
+            return data.respuesta;
+        } catch (error) {
+            console.error('Error al consumir la api: ', error);
+        }
+    }
+
+    boton.addEventListener('click', async function (click) {
+        click.preventDefault();
+        if (email.value === '' || contraseña.value === '') {
+            alert('Completa todos los campos');
+            return;
+        }
+
+        const login = await validarLogin();
+
+        if (login === true) {
+            alert('Inicio de sesión exitoso');
+        } else {
+            alert('Email o contraseña incorrectos');
+        }
+    });
+</script>
+
 </html>
